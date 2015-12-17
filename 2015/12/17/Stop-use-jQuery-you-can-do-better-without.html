@@ -23,7 +23,7 @@
     <meta property="og:description" content="Preface Probably you already heard such remarks before and probably you are fine with jQuery. So you are asking yourself, why there are crazy people who hate such awesome library and why should I stop use it. You&amp;#8217;ll..." />
     <meta property="og:url" content="https://vba.github.io/2015/12/17/Stop-use-jQuery-you-can-do-better-without.html" />
     <meta property="article:published_time" content="2015-12-16T23:00:00.000Z" />
-    <meta property="article:modified_time" content="2015-12-17T09:24:17.051Z" />
+    <meta property="article:modified_time" content="2015-12-17T09:25:16.962Z" />
     <meta property="article:tag" content="Javascript" />
     <meta property="article:tag" content="jQuery" />
     
@@ -47,7 +47,7 @@
     "headline": "Stop use  jQuery , you can do better without",
     "url": "https://vba.github.io/2015/12/17/Stop-use-jQuery-you-can-do-better-without.html",
     "datePublished": "2015-12-16T23:00:00.000Z",
-    "dateModified": "2015-12-17T09:24:17.051Z",
+    "dateModified": "2015-12-17T09:25:16.962Z",
     "keywords": "Javascript,   jQuery",
     "description": "Preface Probably you already heard such remarks before and probably you are fine with jQuery. So you are asking yourself, why there are crazy people who hate such awesome library and why should I stop use it. You&amp;#8217;ll..."
 }
@@ -141,13 +141,13 @@ array1.forEach(function(v, i) {
 <div class="sect3">
 <h4 id="_wrapper_object">Wrapper object</h4>
 <div class="paragraph">
-<p>As you probably know, after almost all of its manipulations, jQuery returns to you a specially object that wraps a result of its manipulations or the absence of such result. For example <strong>$('span')</strong> will return to you such object. It is not enough that the wrapper object has a plenty of its own, home-brewed methods, also those functions are roughly different from the modern web standards. Nothing guarantees you that such methods are homogeneous enough to use wrapper objects inside. Can you tell us about what will be referenced by <strong>this</strong> inside an event handler or what will be the first argument of such handler or even what value will have its special field <strong>target</strong>? Let&#8217;s take a look to a small code sample:</p>
+<p>As you probably know, after almost all of its manipulations, jQuery returns to you a specially object that wraps a result of its manipulations or the absence of such result. For example <em>$('span')</em> will return to you such object. It is not enough that the wrapper object has a plenty of its own, home-brewed methods, also those functions are roughly different from the modern web standards. Nothing guarantees you that such methods are homogeneous enough to use wrapper objects inside. Can you tell us about what will be referenced by <em>this</em> inside an event handler or what will be the first argument of such handler or even what value will have its special field <em>target</em>? Let&#8217;s take a look to a small code sample:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code class="language-javascript" data-lang="javascript">$('button').bind('click', function(e){
   var el = this; // Is it jQuery "object" or not ? Let's see the doc
-  var event = e; // Is it jQuery "object" ? No, it's a special event-wrapper object
+  var event = e; // Is it jQuery "object" ? No, it's a specia event-wrapper object
   var target = event.target; // Is it jQuery "object" ? Sure not, it's a simple DOM element
 });</code></pre>
 </div>
