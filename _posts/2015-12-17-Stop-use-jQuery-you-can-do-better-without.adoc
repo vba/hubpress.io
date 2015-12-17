@@ -81,7 +81,7 @@ If we talking about MV* approach, those problems can be simply avoided.
 
 If you were convinced by this article and you would like to try live and work without jQuery, you can check following links:
 
-1. [You don't need jQuery](http://blog.garstasio.com/you-dont-need-jquery/) - Detailed blog about how to stop use jQuery
-2. [Beyond jQuery](https://leanpub.com/beyondjquery) - The book about how to stop use jQuery
-3. [The cost of frameworks](https://aerotwist.com/blog/the-cost-of-frameworks/) - Toughs about how expensive frameworks are and how developer can spare their time
-4. [Zepto.js](http://zeptojs.com) - Small jQuery-compatible library, some kind of switch from hard drugs of jQuery to light cannabis Zepto.
+1. link:http://blog.garstasio.com/you-dont-need-jquery[You don't need jQuery] - Detailed blog about how to stop use jQuery
+2. link:https://leanpub.com/beyondjquery[Beyond jQuery] - The book about how to stop use jQuery
+3. link:https://aerotwist.com/blog/the-cost-of-frameworks[The cost of frameworks] - Toughs about how expensive frameworks are and how developer can spare their time
+4. link:http://zeptojs.com[Zepto.js] - Small jQuery-compatible library, some kind of switch from hard drugs of jQuery to light cannabis Zepto.
