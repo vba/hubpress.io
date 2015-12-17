@@ -1,4 +1,4 @@
-= Stop use  jQuery , you can do better without
+= Stop use jQuery, you can do better without
 
 :hp-tags: Javascript,  jQuery
 
