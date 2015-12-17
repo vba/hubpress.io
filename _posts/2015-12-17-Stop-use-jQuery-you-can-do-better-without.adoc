@@ -41,11 +41,11 @@ Personally, I prefer always follow the standards, jQuery isn't one, it's just a 
 
 #### Wrapper object
 
-As you probably know, after almost all of its manipulations, jQuery returns to you a specially object that wraps a result of its manipulations or the absence of such result. For example *$('span')* will return to you such object. It is not enough that the wrapper object has a plenty of its own, home-brewed methods, also those functions are roughly different from the modern web standards. Nothing guarantees you that such methods are homogeneous enough to use wrapper objects inside. Can you tell us about what will be referenced by *this* inside an event handler or what will be the first argument of such handler or even what value will have its special field *target*? Let's take a look to a small code sample:
+As you probably know, after almost all of its manipulations, jQuery returns to you a specially object that wraps a result of its manipulations or the absence of such result. For example _$('span')_ will return to you such object. It is not enough that the wrapper object has a plenty of its own, home-brewed methods, also those functions are roughly different from the modern web standards. Nothing guarantees you that such methods are homogeneous enough to use wrapper objects inside. Can you tell us about what will be referenced by _this_ inside an event handler or what will be the first argument of such handler or even what value will have its special field _target_? Let's take a look to a small code sample:
 ```javascript
 $('button').bind('click', function(e){
   var el = this; // Is it jQuery "object" or not ? Let's see the doc
-  var event = e; // Is it jQuery "object" ? No, it's a special event-wrapper object
+  var event = e; // Is it jQuery "object" ? No, it's a specia event-wrapper object
   var target = event.target; // Is it jQuery "object" ? Sure not, it's a simple DOM element
 });
 ```
