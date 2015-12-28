@@ -22,3 +22,13 @@ image:https://habrastorage.org/getpro/habr/post_images/739/d5f/2a5/739d5f2a5c0f6
 link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Expression_closures[MDN]
 
 image:https://habrastorage.org/getpro/habr/post_images/8f8/90f/4ac/8f890f4ac314c77a5476c234016a9187.png[,500]
+
+image:https://habrastorage.org/getpro/habr/post_images/c78/cb6/56e/c78cb656e9904042e7f34df83f40bbf8.png[,700]
+
+link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes[MDN]
+
+image:https://habrastorage.org/getpro/habr/post_images/89a/b6f/391/89ab6f391f5bf1223abb5c819244426e.png[,500]
+
+link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/escape[MDN]
+
+image:https://habrastorage.org/getpro/habr/post_images/d5b/f86/055/d5bf86055e2506c1af9907bc66e8701e.png[,500]
