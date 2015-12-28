@@ -6,4 +6,6 @@
 
 image:https://habrastorage.org/getpro/habr/post_images/400/f8e/3e1/400f8e3e117ded138615d0346677d80d.jpg[,,300]
 
-How often did you thought about change your current job, during last few years? 
+How often did you thought about change your current job, during last few years? Chances are that sometimes, when you get involved into recruitment process, you have to deal with services, so called "talent measurement" and destined to evaluate your ability for one or another job. Whether it be link:https://codility.com/[Codility] or link:https://www.cebglobal.com/[CEB], they aim a common goal- check your skills in one professional domain or another. Do they accomplish their mission, if so, how good they are doing it?
+
+### Time is money, nothing personal
