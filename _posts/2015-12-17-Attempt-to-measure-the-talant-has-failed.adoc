@@ -10,3 +10,15 @@ How often did you thought about change your current job, during last few years? 
 
 ### Time is money, nothing personal
 The most part of such tests/exercises are limited on time.
+
+image:https://habrastorage.org/getpro/habr/post_images/b2f/4ca/a8c/b2f4caa8cdf872d32b1abfd5155cd2d9.png[,700]
+
+link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch[MDN]
+
+image:https://habrastorage.org/getpro/habr/post_images/080/263/4e2/0802634e20aa76ee4719592a0c16886a.png[,500]
+
+image:https://habrastorage.org/getpro/habr/post_images/739/d5f/2a5/739d5f2a5c0f65313511cd5cbf885706.png[,700]
+
+link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Expression_closures[MDN]
+
+image:https://habrastorage.org/getpro/habr/post_images/8f8/90f/4ac/8f890f4ac314c77a5476c234016a9187.png[,500]
