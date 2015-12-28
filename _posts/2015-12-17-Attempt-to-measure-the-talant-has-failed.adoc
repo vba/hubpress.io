@@ -4,6 +4,6 @@
 
 ### Preface
 
-image:https://habrastorage.org/getpro/habr/post_images/400/f8e/3e1/400f8e3e117ded138615d0346677d80d.jpg[height=300]
+image:https://habrastorage.org/getpro/habr/post_images/400/f8e/3e1/400f8e3e117ded138615d0346677d80d.jpg[,,300]
 
 How often did you thought about change your current job, during last few years? 
