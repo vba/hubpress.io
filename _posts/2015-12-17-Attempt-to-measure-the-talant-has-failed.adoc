@@ -1,3 +1,3 @@
-= Employer's tests
+= Attempt to measure the talant has failed
 
-:hp-tags: Javascript, Programming, Job
+:hp-tags: HR, Javascript, Programming, Job
