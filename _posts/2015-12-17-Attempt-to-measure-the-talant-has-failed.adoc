@@ -1,3 +1,7 @@
 = Attempt to measure the talant has failed
 
 :hp-tags: HR, Javascript, Programming, Job
+
+### Preface
+
+How often did you thought about change your current job, during last few years?
