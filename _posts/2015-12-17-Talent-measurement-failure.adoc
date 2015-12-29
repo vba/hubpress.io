@@ -1,4 +1,4 @@
-= Attempt to measure the talant has failed
+= Talent measurement failure
 
 :hp-tags: HR, Javascript, Programming, Job
 
@@ -9,7 +9,12 @@ image:https://habrastorage.org/getpro/habr/post_images/400/f8e/3e1/400f8e3e117de
 How often did you thought about change your current job, during last few years? Chances are that sometimes, when you get involved into recruitment process, you have to deal with services, so called "talent measurement" and destined to evaluate your ability for one or another job. Whether it be link:https://codility.com/[Codility] or link:https://www.cebglobal.com/[CEB], they aim a common goal- check your skills in one professional domain or another. Do they accomplish their mission, if so, how good they are doing it?
 
 ### Time is money, nothing personal
-The most part of such tests/exercises are limited on time.
+The most part of such tests/exercises are limited on time. I don't know how about you, but regarding me, I hate stress situations, the more stress pressure is, the more my brain freezes. I've never made the competitive programming before, the only thing that I've made against the clock where few cool hackathons in relaxed atmosphere. I'm asking myself why we need time-critical tests/exercises? To check if we're able to piss out some amount of code, regarding pointless subject, in delimited amount of time? I don't try to say that the time is worthless, it's important, it's money if you prefer. Upon different scientific studies, the time as a factor of pressure would have not nearly positive influence to developers.
+
+### Format
+I don't even remember how many times I faced tests that have contained misprints or awfully compressed images. More and more often I could find measure services that display their questions as images, may be trying avoid some sort of copy/pasting. If you are looking answer correctly to any question of the test, first, you should be able understand that question. How can you understand it if you have waste a lot of time trying to decrypt the captcha surging up to your sight.
+
+### The idiocy is getting stronger
 
 image:https://habrastorage.org/getpro/habr/post_images/b2f/4ca/a8c/b2f4caa8cdf872d32b1abfd5155cd2d9.png[,700]
 
