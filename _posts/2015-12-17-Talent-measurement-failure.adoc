@@ -3,8 +3,7 @@
 :hp-tags: HR, Javascript, Programming, Job
 
 ### Preface
-
-image:https://habrastorage.org/getpro/habr/post_images/400/f8e/3e1/400f8e3e117ded138615d0346677d80d.jpg[,,300]
+image:https://habrastorage.org/getpro/habr/post_images/400/f8e/3e1/400f8e3e117ded138615d0346677d80d.jpg[,,300] 
 
 How often have you thought about change your current job, during last few years? Chances are that sometimes, when you get involved into recruitment process, you have to deal with services, so called "talent measurement" and destined to evaluate your ability for one or another job. Whether it be link:https://codility.com/[Codility] or link:https://www.cebglobal.com/[CEB], they aim a common goal - check your skills in one professional domain or another. Do they accomplish their mission, if so, how good they are, doing it?
 
@@ -16,21 +15,31 @@ I don't even remember how many times I faced tests that have contained misprints
 
 ### The idiocy is getting stronger
 In this section I would like demonstrate you few examples of a flagrant negligence, introduced by link:https://www.cebglobal.com/[CEB] in their online tests. It is worth noting that, all demonstrated kludges are not characteristic for one particular measurement service. In my practice I've met a lot of such flubs. For example, let's take a look at CEB's _javascript_ test. Approximately in the middle of the test I met a question about conditional _try/catch_. Just check this beauty out:
+
 image:https://habrastorage.org/getpro/habr/post_images/b2f/4ca/a8c/b2f4caa8cdf872d32b1abfd5155cd2d9.png[,700]
+
 Let's see what MDN link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch[says] about it:
+
 image:https://habrastorage.org/getpro/habr/post_images/080/263/4e2/0802634e20aa76ee4719592a0c16886a.png[,500]
 
 Next silly question, that I've met, was about _expression closures_ in _javascript_. You don't know what is it? How dare you? Look and learn:
+
 image:https://habrastorage.org/getpro/habr/post_images/739/d5f/2a5/739d5f2a5c0f65313511cd5cbf885706.png[,700]
+
 The MDN has a different link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Expression_closures[opinion]:
+
 image:https://habrastorage.org/getpro/habr/post_images/8f8/90f/4ac/8f890f4ac314c77a5476c234016a9187.png[,500]
 
 Just a nonsense about classes. Because of this question, I've lost great lot of time, I read it, at least, 5 times. Even after reading I was unable to understand what's a point. Normally, the ES6/ES2015 standard was finalized in June 2015, but there is only partial implementations of this standard available in _V8_ or _SpiderMonkey_ engines. Before this standard the notion of class was unavailable in _javascript_. But, could anybody tell me what means **prototypical**(it was the right answer) type of class in _javascript_? Furthermore, because of two previous silly questions I was a bit lost. That's a question:
+
 image:https://habrastorage.org/getpro/habr/post_images/c78/cb6/56e/c78cb656e9904042e7f34df83f40bbf8.png[,700]
+
 Let's take a loot at MDN's link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes[explanations]:
+
 image:https://habrastorage.org/getpro/habr/post_images/89a/b6f/391/89ab6f391f5bf1223abb5c819244426e.png[,500]
 
 For the last question I've not kept the screenshot, unfortunately. It has contained, approximately, following text: "What's the purpose of **escape** function", with a variety of potential answers. According MDN this function is completely  link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/escape[out of date]:
+
 image:https://habrastorage.org/getpro/habr/post_images/d5b/f86/055/d5bf86055e2506c1af9907bc66e8701e.png[,500]
 
 ### Summary
