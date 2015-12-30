@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Talent measurement failure</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="//vba.github.io/themes/Roon/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:400,700,400italic,700italic|Open+Sans:400italic,700italic,700,400">
+    <link rel="stylesheet" type="text/css" href="//vba.github.io/themes/Roon/assets/css/screen.css?v=1.0.0" />
+
+    <link rel="canonical" href="https://vba.github.io/2015/12/17/Talent-measurement-failure.html" />
+    
+    <meta property="og:site_name" content="Victor&#x27;s blog" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Talent measurement failure" />
+    <meta property="og:description" content="Preface How often have you thought about change your current job, during last few years? Chances are that sometimes, when you get involved into recruitment process, you have to deal with services, so called &quot;talent measurement&quot; and destined to evaluate..." />
+    <meta property="og:url" content="https://vba.github.io/2015/12/17/Talent-measurement-failure.html" />
+    <meta property="article:published_time" content="2015-12-16T23:00:00.000Z" />
+    <meta property="article:modified_time" content="2015-12-30T15:50:41.358Z" />
+    <meta property="article:tag" content="HR" />
+    <meta property="article:tag" content="Javascript" />
+    <meta property="article:tag" content="Programming" />
+    <meta property="article:tag" content="Job" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Talent measurement failure" />
+    <meta name="twitter:description" content="Preface How often have you thought about change your current job, during last few years? Chances are that sometimes, when you get involved into recruitment process, you have to deal with services, so called &quot;talent measurement&quot; and destined to evaluate..." />
+    <meta name="twitter:url" content="https://vba.github.io/2015/12/17/Talent-measurement-failure.html" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Victor&#x27;s blog",
+    "author": {
+        "@type": "Person",
+        "name": "Victor Michaïlovich",
+        "image": "https://avatars.githubusercontent.com/u/420881?v=3",
+        "url": "undefined/author/undefined",
+        "sameAs": null
+    },
+    "headline": "Talent measurement failure",
+    "url": "https://vba.github.io/2015/12/17/Talent-measurement-failure.html",
+    "datePublished": "2015-12-16T23:00:00.000Z",
+    "dateModified": "2015-12-30T15:50:41.358Z",
+    "keywords": "HR,  Javascript,  Programming,  Job",
+    "description": "Preface How often have you thought about change your current job, during last few years? Chances are that sometimes, when you get involved into recruitment process, you have to deal with services, so called &quot;talent measurement&quot; and destined to evaluate..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost ?" />
+    <link rel="alternate" type="application/rss+xml" title="Victor&#x27;s blog" href="https://vba.github.io/rss" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+</head>
+<body class="post-template tag-HR tag-Javascript tag-Programming tag-Job  noimage">
+
+    
+
+
+    <article role="main" class="">
+        <header>
+            <a href="https://vba.github.io" id="home_link">«</a>
+            <div class="meta"><time datetime="2015-12-17"><a href="/2015/12/17/Talent-measurement-failure.html">December 17, 2015</a></time> <span class="count" id="js-reading-time"></span></div>
+            <h1>Talent measurement failure</h1>
+        </header>
+
+        <div class="text" id="js-post-content">
+            <div class="sect2">
+<h3 id="_preface">Preface</h3>
+<div class="paragraph">
+<p><span class="image"><img src="https://habrastorage.org/getpro/habr/post_images/400/f8e/3e1/400f8e3e117ded138615d0346677d80d.jpg" alt="400f8e3e117ded138615d0346677d80d.jpg" width="300"></span></p>
+</div>
+<div class="paragraph">
+<p>How often have you thought about change your current job, during last few years? Chances are that sometimes, when you get involved into recruitment process, you have to deal with services, so called "talent measurement" and destined to evaluate your ability for one or another job. Whether it be <a href="https://codility.com/">Codility</a> or <a href="https://www.cebglobal.com/">CEB</a>, they aim a common goal - check your skills in one professional domain or another. Do they accomplish their mission, if so, how good they are, doing it?</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_time_is_money_nothing_personal">Time is money, nothing personal</h3>
+<div class="paragraph">
+<p>The most part of such tests/exercises are roughly timeboxed. I don&#8217;t know how about you, but regarding me, I hate stress situations, the more stress pressure is, the more my brain freezes. I&#8217;ve never made the competitive programming before, the only thing that I&#8217;ve made against the clock where few cool hackathons in relaxed atmosphere. I&#8217;m asking myself why we need time-critical tests/exercises? To check if we&#8217;re able to piss out some amount of smell code, regarding pointless subject, in delimited amount of time? I don&#8217;t try to say that the time is worthless, it&#8217;s important, it&#8217;s money if you prefer. Upon different scientific studies, the time as a factor of pressure would have not nearly positive influence to developers.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_format">Format</h3>
+<div class="paragraph">
+<p>I don&#8217;t even remember how many times I faced tests that have contained misprints or awfully compressed images. More and more often I meet measure services that display their questions as images, may be trying avoid some sort of copy/pasting. If you are looking make correct answer to a questions of the test, first, you should be able understand this question. How can you understand it if you have to waste a lot of time trying to decrypt the captcha surging up to your sight.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_the_idiocy_is_getting_stronger">The idiocy is getting stronger</h3>
+<div class="paragraph">
+<p>In this section I would like demonstrate you few examples of a flagrant negligence, introduced by <a href="https://www.cebglobal.com/">CEB</a> in their online tests. It is worth noting that, all demonstrated kludges are not characteristic for one particular measurement service. In my practice I&#8217;ve met a lot of such flubs. For example, let&#8217;s take a look at CEB&#8217;s <em>javascript</em> test. Approximately in the middle of the test I met a question about conditional <em>try/catch</em>. Just check this beauty out:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://habrastorage.org/getpro/habr/post_images/b2f/4ca/a8c/b2f4caa8cdf872d32b1abfd5155cd2d9.png" alt="b2f4caa8cdf872d32b1abfd5155cd2d9.png" width="700"></span></p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s see what MDN <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try&#8230;&#8203;catch">says</a> about it:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://habrastorage.org/getpro/habr/post_images/080/263/4e2/0802634e20aa76ee4719592a0c16886a.png" alt="0802634e20aa76ee4719592a0c16886a.png" width="500"></span></p>
+</div>
+<div class="paragraph">
+<p>Next silly question, that I&#8217;ve met, was about <em>expression closures</em> in <em>javascript</em>. You don&#8217;t know what is it? How dare you? Look and learn:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://habrastorage.org/getpro/habr/post_images/739/d5f/2a5/739d5f2a5c0f65313511cd5cbf885706.png" alt="739d5f2a5c0f65313511cd5cbf885706.png" width="700"></span></p>
+</div>
+<div class="paragraph">
+<p>The MDN has a different <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Expression_closures">opinion</a>:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://habrastorage.org/getpro/habr/post_images/8f8/90f/4ac/8f890f4ac314c77a5476c234016a9187.png" alt="8f890f4ac314c77a5476c234016a9187.png" width="500"></span></p>
+</div>
+<div class="paragraph">
+<p>Just a nonsense about classes. Because of this question, I&#8217;ve lost great lot of time, I read it, at least, 5 times. Even after reading I was unable to understand what&#8217;s a point. Normally, the ES6/ES2015 standard was finalized in June 2015, but there is only partial implementations of this standard available in <em>V8</em> or <em>SpiderMonkey</em> engines. Before this standard the notion of class was unavailable in <em>javascript</em>. But, could anybody tell me what means <strong>prototypical</strong>(it was the right answer) type of class in <em>javascript</em>? Furthermore, because of two previous silly questions I was a bit lost. That&#8217;s a question:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://habrastorage.org/getpro/habr/post_images/c78/cb6/56e/c78cb656e9904042e7f34df83f40bbf8.png" alt="c78cb656e9904042e7f34df83f40bbf8.png" width="700"></span></p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s take a loot at MDN&#8217;s <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">explanations</a>:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://habrastorage.org/getpro/habr/post_images/89a/b6f/391/89ab6f391f5bf1223abb5c819244426e.png" alt="89ab6f391f5bf1223abb5c819244426e.png" width="500"></span></p>
+</div>
+<div class="paragraph">
+<p>For the last question I&#8217;ve not kept the screenshot, unfortunately. It has contained, approximately, following text: "What&#8217;s the purpose of <strong>escape</strong> function", with a variety of potential answers. According MDN this function is completely  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/escape">out of date</a>:</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="https://habrastorage.org/getpro/habr/post_images/d5b/f86/055/d5bf86055e2506c1af9907bc66e8701e.png" alt="d5bf86055e2506c1af9907bc66e8701e.png" width="500"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_summary">Summary</h3>
+<div class="paragraph">
+<p>Personally, I think that the most part of, so-called, services of talent measurement, are counterproductive for employers and time-consuming and simply wasteful for potential candidates. During my career, I was on both sides of the fence. In my opinion, a quick phone chat, technical exercise and following consideration of results of such exercise can be much more fruitful and productive.</p>
+</div>
+</div>
+        </div>
+
+        <menu>
+            <a href="" id="btn_share" class="btn" title="Share">
+                <span aria-hidden="true" data-icon="S"></span>
+                <strong>Share</strong>
+            </a>
+            <a href="http://twitter.com/share?text=Talent%20measurement%20failure&url=https://vba.github.io/2015/12/17/Talent-measurement-failure.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" id="btn_comment" class="btn" target="_blank">
+                <span aria-hidden="true" data-icon="C"></span> Comment on Twitter
+            </a>
+        </menu>
+
+
+        <footer class="post-footer" role="contentinfo">
+
+            <div class="vcard">
+                <!-- <a href="https://vba.github.io/rss" id="btn_feed" class="btn" title="Feed" target="_blank">
+                    <span aria-hidden="true" data-icon=")"></span>
+                    <strong>Feed</strong>
+                </a> -->
+
+                <a href="" class="photo">
+                    <span style="background-image: url('https://avatars.githubusercontent.com/u/420881?v=3');">
+                        <img src="https://avatars.githubusercontent.com/u/420881?v=3" alt="Victor Michaïlovich">
+                    </span>
+                </a>
+
+                <div class="details">
+                    <h4><a href="" class="url n">Victor Michaïlovich</a></h4>
+                    
+                    
+                </div>
+            </div>
+
+            <div id="user_bio">
+                <div class="inner">
+                    
+                </div>
+            </div>
+
+        </footer>
+
+
+
+
+    </article>
+
+    <div id="share_modal">
+        <div class="wrap">
+            <div class="inner">
+                <header>
+                    Share
+                    <a href="" class="close" title="Close">&times;</a>
+                </header>
+
+                <div class="roon-share-links">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-dnt="true">Tweet</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+                    <div id="fb-elems">
+                        <div id="fb-root"></div>
+                        <script>(function(d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s); js.id = id;
+                        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=463438580397968";
+                        fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));</script>
+                        <div class="fb-like" data-send="false" data-layout="button_count" data-width="110" data-show-faces="false" data-font="arial"></div>
+                    </div>
+
+                    <div id="pinit-btn">
+                        <a href="//pinterest.com/pin/create/button/?url=https://vba.github.io/2015/12/17/Talent-measurement-failure.html&amp;description=Talent%20measurement%20failure-Victor's%20blog " data-pin-do="buttonPin" data-pin-config="beside"><img src="//assets.pinterest.com/images/pidgets/pin_it_button.png"></a>
+                        <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script>
+
+            function get_text(el) {
+                ret = "";
+                var length = el.childNodes.length;
+                for(var i = 0; i < length; i++) {
+                    var node = el.childNodes[i];
+                    if(node.nodeType != 8) {
+                        ret += node.nodeType != 1 ? node.nodeValue : get_text(node);
+                    }
+                }
+                return ret;
+            }
+            function reading_time () {
+                var post_content = document.getElementById('js-post-content');
+                if (post_content) {
+                    var words = get_text(post_content),
+                        count = words.split(/\s+/).length,
+                        read_time = Math.ceil((count / 150)),
+                        read_time_node = document.createTextNode(read_time + ' min read');
+                    document.getElementById('js-reading-time').appendChild(read_time_node);
+                }
+            }
+
+        function no_schema_links () {
+            var links = document.querySelectorAll('.js-remove-domain-schema');
+            if (links) {
+                for (i = 0; i < links.length; ++i) {
+                    var link = links[i],
+                        text = link.innerHTML,
+                        no_schema = text.replace(/.*?:\/\//g, "");
+                    link.innerHTML = no_schema;
+                }
+            }
+        }
+
+        window.onload = function () {
+            no_schema_links();
+
+            reading_time();
+        }
+    </script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js?v="></script> 
+      <script type="text/javascript">
+        jQuery( document ).ready(function() {
+          // change date with ago
+          jQuery('ago.ago').each(function(){
+            var element = jQuery(this).parent();
+            element.html( moment(element.text()).fromNow());
+          });
+        });
+
+        hljs.initHighlightingOnLoad();      
+      </script>
+
+        <script>
+            $(function(){
+                var share_modal = $("#share_modal"),
+                    update_social_links = true;
+
+                $("#btn_share").click(function(){
+                    var that = $(this);
+                    share_modal.fadeIn(200);
+                    return false;
+                });
+
+                share_modal.click(function(e){
+                    if (e.target.className == "wrap" || e.target.id == "share_modal") {
+                        share_modal.fadeOut(200);
+                    }
+                    return false;
+                });
+
+                share_modal.find("div.inner > header > a.close").click(function(){
+                    share_modal.fadeOut(200);
+                    return false;
+                });
+            });
+        </script>
+
+
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-71576700-1', 'auto');
+    ga('send', 'pageview');
+
+    </script>
+
+</body>
+</html>
