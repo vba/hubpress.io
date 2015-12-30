@@ -27,11 +27,12 @@ image:https://habrastorage.org/getpro/habr/post_images/8f8/90f/4ac/8f890f4ac314c
 
 Just a nonsense about classes. Because of this question, I've lost a lot of time, I read it, at least, 5 times. Even after reading I was unable to understand what's a point. Normally, the ES6/ES2015 standard was finalized in June 2015, but there is only partial implementation of this standard that you could find in _V8_ or _SpiderMonkey_ engines. Before this standard the notion of class was unavailable in _javascript_. But, could anybody say me what means **prototypical**(it was the right answer) type of class in _javascript_? Furthermore, because of two previous silly questions I was a bit lost. That's a question:
 image:https://habrastorage.org/getpro/habr/post_images/c78/cb6/56e/c78cb656e9904042e7f34df83f40bbf8.png[,700]
-
-link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes[MDN]
-
+Let's take a loot at MDN's link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes[explanations]:
 image:https://habrastorage.org/getpro/habr/post_images/89a/b6f/391/89ab6f391f5bf1223abb5c819244426e.png[,500]
 
-link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/escape[MDN]
-
+For the last question I did not keep the screenshot, unfortunately. It has contained, approximately, following text: "What's the purpose of **escape** function", with a variety of potential answers. According MDN this function is completely  link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/escape[out of date]:
 image:https://habrastorage.org/getpro/habr/post_images/d5b/f86/055/d5bf86055e2506c1af9907bc66e8701e.png[,500]
+
+### Summary
+
+Personally, I think that the most part of, so-called, systems of talent measurement, are counterproductive for employers and time-consuming and simply wasteful for potential candidates. During my career, I was on both sides of the fence. In my opinion, a quick phone chat, technical exercise and following consideration of results of such exercise can be much more fruitful and productive.
