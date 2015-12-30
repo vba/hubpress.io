@@ -15,19 +15,17 @@ The most part of such tests/exercises are limited on time. I don't know how abou
 I don't even remember how many times I faced tests that have contained misprints or awfully compressed images. More and more often I could find measure services that display their questions as images, may be trying avoid some sort of copy/pasting. If you are looking answer correctly to any question of the test, first, you should be able understand that question. How can you understand it if you have waste a lot of time trying to decrypt the captcha surging up to your sight.
 
 ### The idiocy is getting stronger
-
+In this section I would like demonstrate you few examples of a flagrant negligence, introduced by link:https://www.cebglobal.com/[CEB] in their online tests. It is worth noting that all demonstrated kludges are not characteristic for one particular measuring service, in my practice I've met a lot of such flubs. For example, let's take a look a test of _javascript_, where, approximately in the middle of the test I met a question about conditional _try/catch_. Just take a look at this beauty:
 image:https://habrastorage.org/getpro/habr/post_images/b2f/4ca/a8c/b2f4caa8cdf872d32b1abfd5155cd2d9.png[,700]
-
-link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch[MDN]
-
+Let's see what MDN link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch[says] about it:
 image:https://habrastorage.org/getpro/habr/post_images/080/263/4e2/0802634e20aa76ee4719592a0c16886a.png[,500]
 
+Next silly question, that I've met, was about _expression closures_ in _javascript_. You don't know what is? How dare you? Look and learn:
 image:https://habrastorage.org/getpro/habr/post_images/739/d5f/2a5/739d5f2a5c0f65313511cd5cbf885706.png[,700]
-
-link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Expression_closures[MDN]
-
+The MDN has a different link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Expression_closures[opinion]:
 image:https://habrastorage.org/getpro/habr/post_images/8f8/90f/4ac/8f890f4ac314c77a5476c234016a9187.png[,500]
 
+Just a nonsense about classes. Because of this question, I've lost a lot of time, I read it, at least, 5 times. Even after reading I was unable to understand what's a point. Normally, the ES6/ES2015 standard was finalized in June 2015, but there is only partial implementation of this standard that you could find in _V8_ or _SpiderMonkey_ engines. Before this standard the notion of class was unavailable in _javascript_. But, could anybody say me what means **prototypical**(it was the right answer) type of class in _javascript_? Furthermore, because of two previous silly questions I was a bit lost. That's a question:
 image:https://habrastorage.org/getpro/habr/post_images/c78/cb6/56e/c78cb656e9904042e7f34df83f40bbf8.png[,700]
 
 link:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes[MDN]
