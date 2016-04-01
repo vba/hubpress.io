@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stop use jQuery, you can do better without</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="..\assets/style.css" />
+    <link type="text/css" rel="stylesheet" href="..\assets/pilcrow.css" />
+    <link type="text/css" rel="stylesheet" href="..\assets/hljs-github.min.css"/>
+  </head>
+<body><h2 id="stop-use-jquery-you-can-do-better-without"><a class="header-link" href="#stop-use-jquery-you-can-do-better-without"></a>Stop use jQuery, you can do better without</h2>
+<h3 id="preface"><a class="header-link" href="#preface"></a>Preface</h3>
+<p>Probably you already heard such remarks before and probably you are fine with jQuery. So you are asking yourself, why there are crazy people who hate such awesome library and why should I stop use it. You&#39;ll be astonished to hear it but it&#39;s not about hate. Let&#39;s try to clarify the situation. </p>
+<p>As many of others I&#39;ve started with jQuery in bronze age times (2007) when the gap between different browsers was so painful and the lack of common standards was so hateful. JQuery was a source of inspiration and a light ray in the time of darkness, it was revolutionary. I&#39;ve fallen in love with jQuery when I&#39;ve started use it. I wrote few handsome plugins with and I also organized few technical talks and team trainings around jQuery. But then, few years ago, I&#39;ve changed my mind.</p>
+<p>Let&#39;s see what&#39;s wrong with jQuery&#39;s usage in modern web development practices and how we could fix it.</p>
+<h4 id="uniformization"><a class="header-link" href="#uniformization"></a>Uniformization</h4>
+<p>One of the amazing killer-features of jQuery was an ability to smooth or fill the gap in the case of DOM usage under different browsers and theirs versions. Let&#39;s face the truth, a lot of things have changed since these times, especially the appearance of modern standards. Today in the most cases jQuery redirects the function&#39;s call to the standard DOM API, or exceptionally it can uses its own implementation of one or another feature. In the modern world we can easily survive without any usage of jQuery&#39;s selectors and utilities. We can simply replace following selectors:</p>
+<pre class="hljs"><code>$(<span class="hljs-string">'div, span, article'</span>);
+$(<span class="hljs-string">'#formId :invalid'</span>);</code></pre><p>by:</p>
+<pre class="hljs"><code><span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'div, span, article'</span>);
+<span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">'#formId :invalid'</span>);</code></pre><p>Or utilities like that:</p>
+<pre class="hljs"><code>$.isArray(array1);
+$.each(array, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">i, v</span>) </span>{
+  <span class="hljs-comment">// do something here</span>
+});</code></pre><p>could be replaced by:</p>
+<pre class="hljs"><code><span class="hljs-built_in">Array</span>.isArray(array1);
+array1.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">v, i</span>) </span>{
+  <span class="hljs-comment">// do something here</span>
+}</code></pre><p>Personally, I prefer always follow the standards, jQuery isn&#39;t one, it&#39;s just a library.</p>
+<h4 id="wrapper-object"><a class="header-link" href="#wrapper-object"></a>Wrapper object</h4>
+<p>As you probably know, after almost all of its manipulations, jQuery returns to you a specially object that wraps a result of its manipulations or the absence of such result. For example <em>$(&#39;span&#39;)</em> will return to you such object. It is not enough that the wrapper object has a plenty of its own, home-brewed methods, also those functions are roughly different from the modern web standards. Nothing guarantees you that such methods are homogeneous enough to use wrapper objects inside. Can you tell us about what will be referenced by <em>this</em> inside an event handler or what will be the first argument of such handler or even what value will have its special field <em>target</em>? Let&#39;s take a look to a small code sample:</p>
+<pre class="hljs"><code>$(<span class="hljs-string">'button'</span>).bind(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)</span>{
+  <span class="hljs-keyword">var</span> el = <span class="hljs-keyword">this</span>; <span class="hljs-comment">// Is it jQuery "object" or not ? Let's see the doc</span>
+  <span class="hljs-keyword">var</span> event = e; <span class="hljs-comment">// Is it jQuery "object" ? No, it's a special event-wrapper object</span>
+  <span class="hljs-keyword">var</span> target = event.target; <span class="hljs-comment">// Is it jQuery "object" ? Sure not, it's a simple DOM element</span>
+});</code></pre><p>So buddies, sometimes we got a wrapper, sometimes not, but sometimes it could be a &quot;special&quot; wrapper, what a nonsense? Why should we complicate our live at this point?
+You could suppose that there is a workaround, what about this silly naming convention to prefix all &quot;special&quot; objects with the dollar sign. Something like that:</p>
+<pre class="hljs"><code>$(<span class="hljs-string">'button'</span>).bind(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)</span>{
+  <span class="hljs-keyword">var</span> $el = $(<span class="hljs-keyword">this</span>);
+  <span class="hljs-keyword">var</span> _event = e; <span class="hljs-comment">// Let's use an another special convention for jQuery's events wrapper, prefix _</span>
+  <span class="hljs-keyword">var</span> $event = e; <span class="hljs-comment">// No, we should be coherent</span>
+  <span class="hljs-keyword">var</span> target = $(event.target); <span class="hljs-comment">// I'm sorry I forgot the dollar, because I'm just a human</span>
+  <span class="hljs-keyword">var</span> target2 = $(target); <span class="hljs-comment">// Oops, but I have to be sure that it's wrapped</span>
+  <span class="hljs-keyword">var</span> var1 = someFunc(); <span class="hljs-comment">// I forgot, this function should return $ or simple NodeList</span>
+  $(var1); <span class="hljs-comment">// Never mind ...</span>
+});</code></pre><h4 id="jquery-as-a-perfect-model-of-web-development"><a class="header-link" href="#jquery-as-a-perfect-model-of-web-development"></a>jQuery as a perfect model of web development</h4>
+<p>How many times I heard such opinion that jQuery is a kind of perfect model for all possible types of web development. If you are web developer you have to use jQuery to achieve your goals and to aim the endless happiness. Probably because jQuery is good, it has balls, and it has a plenty of such awesome plugins. In my opinion it&#39;s a full bullshit, maybe it was partially true 5 years ago, but not now. It&#39;s the same thing as supposing that if you need to develop modern Windows 8/10 based applications you have to use pure Win32 API.</p>
+<p>As I said above, jQuery it&#39;s just a library, taking in consideration present day trends, it&#39;s a low level library. Such stuff can not be suitable for writing wide, modern web applications. Nothing prevents you from usage of jQuery or pure DOM/API for realization of any kind of low-level task, but write with it an entire web application and then support it, is far to be a piece of cake. I saw a lot of different project becoming a huge plate of spaghetti on their client part, not because jQuery was a root of evil, just because it was too hard to manage tones of code and they ended up being overwhelmed.</p>
+<p>How to avoid that? Use more appropriated/adapted solutions for your needs, solutions such as MV* frameworks/libraries for the complex web-application or something else for another needs.</p>
+<h4 id="testing"><a class="header-link" href="#testing"></a>Testing</h4>
+<p>This part is inextricable from previous one. As you know the human being is lazy, it&#39;s a nature, and good (automation)programmers are not an exception. Have you ever tested the code that rely on jQuery? Because of chaining methods it becomes non-trivial, tricky task. Especially if we take in consideration the fact that often the project based on pure jQuery can become fat incredibly fast and the developers have not time or cannot rearrange their code. The result is often oppressive. How you can speak about QA when even the author is unable to understand what his own code does.</p>
+<p>If we talking about MV* approach, those problems can be simply avoided.</p>
+<h3 id="summary"><a class="header-link" href="#summary"></a>Summary</h3>
+<p>If you were convinced by this article and you would like to try live and work without jQuery, you can check following links:</p>
+<ol class="list">
+<li><a href="http://blog.garstasio.com/you-dont-need-jquery/">You don&#39;t need jQuery</a> - Detailed blog about how to stop use jQuery</li>
+<li><a href="https://leanpub.com/beyondjquery">Beyond jQuery</a> - The book about how to stop use jQuery</li>
+<li><a href="https://aerotwist.com/blog/the-cost-of-frameworks/">The cost of frameworks</a> - Toughs about how expensive frameworks are and how developer can spare their time</li>
+<li><a href="http://zeptojs.com">Zepto.js</a> - Small jQuery-compatible library, some kind of switch from hard drugs of jQuery to light cannabis Zepto.</li>
+</ol>
+</body>
+</html>
