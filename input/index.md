@@ -7,8 +7,8 @@ I'm passionate about technology. In web developer, I've also interest in functio
 ### My articles
 
 - March 2016
-    - [Unit testing with F#](https://vba.github.io/_posts/20160331-fsharp-unit-testing.html)
+    - [Unit testing with F#](https://vba.github.io/posts/20160331-fsharp-unit-testing.html)
 - December 2015
-    - [Talent measurement failure](https://vba.github.io/_posts/20151217-talent-measurement-failure.html)
-    - [Stop use jQuery, you can do better without](https://vba.github.io/_posts/20151216-stop-use-jquery-you-can-do-better-without.html)
+    - [Talent measurement failure](https://vba.github.io/posts/20151217-talent-measurement-failure.html)
+    - [Stop use jQuery, you can do better without](posts/20151216-stop-use-jquery-you-can-do-better-without.html)
 
