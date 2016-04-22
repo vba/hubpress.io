@@ -51,7 +51,7 @@
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">grind</span></span>: (<span class="hljs-type">Wheat</span> =&gt; <span class="hljs-type">Flour</span>) = w =&gt; {println(<span class="hljs-string">"make the flour"</span>); <span class="hljs-type">Flour</span>()}
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">kneadDough</span></span>: (<span class="hljs-type">Flour</span> =&gt; <span class="hljs-type">Dough</span>) = f =&gt; {println(<span class="hljs-string">"make the dough"</span>); <span class="hljs-type">Dough</span>()}
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">distributeDough</span></span>: (<span class="hljs-type">Dough</span> =&gt; <span class="hljs-type">Seq</span>[<span class="hljs-type">Dough</span>]) = d =&gt; {println(<span class="hljs-string">"distribute the dough"</span>); <span class="hljs-type">Seq</span>[<span class="hljs-type">Dough</span>]()}
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bake</span></span>: (<span class="hljs-type">Seq</span>[<span class="hljs-type">Dough</span>] =&gt; <span class="hljs-type">Seq</span>[<span class="hljs-type">Bread</span>]) = sd =&gt; {println(<span class="hljs-string">"make the bread"</span>); <span class="hljs-type">Seq</span>[<span class="hljs-type">Bread</span>]()}
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bake</span></span>: (<span class="hljs-type">Seq</span>[<span class="hljs-type">Dough</span>] =&gt; <span class="hljs-type">Seq</span>[<span class="hljs-type">Bread</span>]) = sd =&gt; {println(<span class="hljs-string">"bake the bread"</span>); <span class="hljs-type">Seq</span>[<span class="hljs-type">Bread</span>]()}
 
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
         (grind &gt;&gt; kneadDough &gt;&gt; distributeDough &gt;&gt; bake) (<span class="hljs-type">Wheat</span>())
@@ -69,7 +69,34 @@ type Bread = {bread:<span class="hljs-keyword">string</span>}
 <span class="hljs-function"><span class="hljs-keyword">let</span> <span class="hljs-title">grind</span> (<span class="hljs-params">w:Wheat</span>) </span>= printfn <span class="hljs-string">"make the flour"</span>; {flour = <span class="hljs-string">""</span>}
 <span class="hljs-function"><span class="hljs-keyword">let</span> <span class="hljs-title">kneadDough</span> (<span class="hljs-params">f:Flour</span>) </span>= printfn <span class="hljs-string">"make the dough"</span>; {dough = <span class="hljs-string">""</span>}
 <span class="hljs-function"><span class="hljs-keyword">let</span> <span class="hljs-title">distributeDough</span> (<span class="hljs-params">d:Dough</span>) </span>= printfn <span class="hljs-string">"distribute the dough"</span>; seq { <span class="hljs-keyword">yield</span> d}
-<span class="hljs-function"><span class="hljs-keyword">let</span> <span class="hljs-title">bake</span> (<span class="hljs-params">sd:seq&lt;Dough&gt;</span>) </span>= printfn <span class="hljs-string">"make the bread"</span>; seq { <span class="hljs-keyword">yield</span> {bread = <span class="hljs-string">""</span>}}
+<span class="hljs-function"><span class="hljs-keyword">let</span> <span class="hljs-title">bake</span> (<span class="hljs-params">sd:seq&lt;Dough&gt;</span>) </span>= printfn <span class="hljs-string">"bake the bread"</span>; seq { <span class="hljs-keyword">yield</span> {bread = <span class="hljs-string">""</span>}}
 
-(grind &gt;&gt; kneadDough &gt;&gt; distributeDough &gt;&gt; bake) ({wheat = <span class="hljs-string">""</span>})</code></pre></body>
+(grind &gt;&gt; kneadDough &gt;&gt; distributeDough &gt;&gt; bake) ({wheat = <span class="hljs-string">""</span>})</code></pre><p>The output will be:</p>
+<pre class="hljs"><code>make <span class="hljs-keyword">the</span> flour
+make <span class="hljs-keyword">the</span> dough
+distribute <span class="hljs-keyword">the</span> dough
+bake <span class="hljs-keyword">the</span> bread</code></pre><h3 id="currying"><a class="header-link" href="#currying"></a>Currying</h3>
+<p>If you&#39;re not familiar with the notion of currying, you can get more details <a href="https://en.wikipedia.org/wiki/Currying">here</a>. In this part we will combine two powerful mechanisms that came from functional world - currying and composition. Let&#39;s consider the situation when you need to work with functions that have more than one parameter and most of this parameters are known before the execution. For example the <code>bake</code> function from previous part can have parameter as temperature or duration of baking.</p>
+<p>Scala:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bake</span></span>: (<span class="hljs-type">Int</span> =&gt; <span class="hljs-type">Int</span> =&gt; <span class="hljs-type">Seq</span>[<span class="hljs-type">Dough</span>] =&gt; <span class="hljs-type">Seq</span>[<span class="hljs-type">Bread</span>]) =
+    temperature =&gt; duration =&gt; sd =&gt; {
+        println(<span class="hljs-string">s"bake the bread, duration: <span class="hljs-subst">$duration</span>, temperature: <span class="hljs-subst">$temperature</span>"</span>)
+        <span class="hljs-type">Seq</span>[<span class="hljs-type">Bread</span>]()
+    }</code></pre><p>F#:</p>
+<pre class="hljs"><code>let bake temperature duration (sd:se<span class="hljs-string">q&lt;Dough&gt;</span>) = 
+    printfn <span class="hljs-string">"bake the bread, duration: %d, temperature: %d"</span> temperature duration
+    se<span class="hljs-string">q { yield {bread = ""}</span>}</code></pre><p>Currying is our friend, let&#39;s define one recipe for baking the bread.</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bakeRecipe1</span> </span>= bake(<span class="hljs-number">350</span>)(<span class="hljs-number">45</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    (grind &gt;&gt; kneadDough &gt;&gt; distributeDough &gt;&gt; bakeRecipe1) (<span class="hljs-type">Wheat</span>())
+}</code></pre><p>F#:</p>
+<pre class="hljs"><code>let bakeRecipe1: se<span class="hljs-string">q&lt;Dough&gt;</span> -&gt; se<span class="hljs-string">q&lt;Bread&gt;</span> = bake <span class="hljs-number">350</span> <span class="hljs-number">45</span>
+(grind &gt;&gt; kneadDough &gt;&gt; distributeDough &gt;&gt; bakeRecipe1) ({wheat = <span class="hljs-string">""</span>})</code></pre><p>The output in both case will be:</p>
+<pre class="hljs"><code>make <span class="hljs-keyword">the</span> flour
+make <span class="hljs-keyword">the</span> dough
+distribute <span class="hljs-keyword">the</span> dough
+bake <span class="hljs-keyword">the</span> bread, duration: <span class="hljs-number">45</span>, temperature: <span class="hljs-number">350</span></code></pre><h3 id="monadic-chaining"><a class="header-link" href="#monadic-chaining"></a>Monadic chaining</h3>
+<p>Can you imagine the situation when in the middle of the chain something go wrong? For example a case when the pipe that supplies yeast or water gets chock and no dough is produced or when the oven gets broken and we obtain a half-baked mass of dough. The pure function composition can be interesting for failure tolerant or unbreakable tasks. But what should we do in above described situation? The answer is trivial, use the monads. You can find a lot of fundamental information </p>
+</body>
 </html>
