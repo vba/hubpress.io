@@ -1,5 +1,7 @@
 ## Unit testing with F#
 
+_Thursday, March 31st 2016_
+
 ### Preface
 
 Probably you've already heard a lot of good things about F# and maybe you've already tried to use it on your small or personal projects. But how should we proceed when it's a matter of something more important than a simple console application or a script. This article narrates about my personal experience of unit testing with F#.

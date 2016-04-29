@@ -1,5 +1,7 @@
 ## Functions composition in F# and Scala
 
+_?????_
+
 ### Let's speak simply
 
 I have started think about writing this article a week ago, when I tried to explain my 7 years old kid what mathematical function are. Sounds crazy and maybe pointless, but I finished my introduction by speaking about functions composition. It was so natural to show the meaning of functions by giving the examples from real world and talking about functions composition. The goal of this article to demonstrate how easy and powerful is function composition. I'll start by pure composition introduction and cool explanation, after that we'll taste a bit of currying and get some fun with monads. Hope you'll enjoy.

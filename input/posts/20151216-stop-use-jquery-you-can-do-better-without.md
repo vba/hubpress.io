@@ -1,5 +1,7 @@
 ## Stop use jQuery, you can do better without
 
+_Wednesday, December 16th 2015_
+
 ### Preface
 
 Probably you already heard such remarks before and probably you are fine with jQuery. So you are asking yourself, why there are crazy people who hate such awesome library and why should I stop use it. You'll be astonished to hear it but it's not about hate. Let's try to clarify the situation. 

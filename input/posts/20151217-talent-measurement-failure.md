@@ -1,5 +1,7 @@
 ## Talent measurement failure
 
+_Thursday, December 17th 2015_
+
 ### Preface
 ![](https://habrastorage.org/getpro/habr/post_images/400/f8e/3e1/400f8e3e117ded138615d0346677d80d.jpg)
 
