@@ -1,4 +1,4 @@
-## Unit testing with F#
+## Unit testing with F♯
 
 _Thursday, March 31st 2016_
 
