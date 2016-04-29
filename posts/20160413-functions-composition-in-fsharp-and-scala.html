@@ -98,5 +98,31 @@ make <span class="hljs-keyword">the</span> dough
 distribute <span class="hljs-keyword">the</span> dough
 bake <span class="hljs-keyword">the</span> bread, duration: <span class="hljs-number">45</span>, temperature: <span class="hljs-number">350</span></code></pre><h3 id="monadic-chaining"><a class="header-link" href="#monadic-chaining"></a>Monadic chaining</h3>
 <p>Can you imagine the situation when in the middle of the chain something go wrong? For example a case when the pipe that supplies yeast or water gets chock and no dough is produced or when the oven gets broken and we obtain a half-baked mass of dough. The pure function composition can be interesting for failure tolerant or unbreakable tasks. But what should we do in above described situation? The answer is trivial, use the monads. You can find a lot of fundamental information </p>
-</body>
+<pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">Either</span>&lt;<span class="hljs-title">'a</span>, <span class="hljs-title">'b</span>&gt; </span>= 
+    | Left <span class="hljs-keyword">of</span> <span class="hljs-symbol">'a</span> 
+    | Right <span class="hljs-keyword">of</span> <span class="hljs-symbol">'b</span>
+
+<span class="hljs-keyword">let</span> chainFunOrFail twoTrackInput switchFunction = 
+    <span class="hljs-keyword">match</span> twoTrackInput <span class="hljs-keyword">with</span>
+    | Left s -&gt; switchFunction s
+    | Right f -&gt; Right f
+
+<span class="hljs-keyword">let</span> (&gt;&gt;=) = chainFunOrFail</code></pre>  <script id="dsq-count-scr" src="http://victors-blog.disqus.com/count.js" async></script>
+  <div id="disqus_thread"></div>
+  <script>
+      var disqus_config = function () {
+          this.page.url = window.location.href; // Replace PAGE_URL with your page's canonical URL variable
+          this.page.identifier = 'Functions composition in F# and Scala'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+  
+      (function() { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = '//victors-blog.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+      })();
+  </script>
+  <noscript>
+      Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+  </noscript></body>
 </html>

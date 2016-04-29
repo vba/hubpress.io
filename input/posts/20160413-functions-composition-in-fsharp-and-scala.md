@@ -163,3 +163,16 @@ bake the bread, duration: 45, temperature: 350
 ### Monadic chaining
 
 Can you imagine the situation when in the middle of the chain something go wrong? For example a case when the pipe that supplies yeast or water gets chock and no dough is produced or when the oven gets broken and we obtain a half-baked mass of dough. The pure function composition can be interesting for failure tolerant or unbreakable tasks. But what should we do in above described situation? The answer is trivial, use the monads. You can find a lot of fundamental information 
+
+```F#
+type Either<'a, 'b> = 
+    | Left of 'a 
+    | Right of 'b
+
+let chainFunOrFail twoTrackInput switchFunction = 
+    match twoTrackInput with
+    | Left s -> switchFunction s
+    | Right f -> Right f
+
+let (>>=) = chainFunOrFail
+```

@@ -1,4 +1,3 @@
-
 ## Victor's blog
 
 ### About me
