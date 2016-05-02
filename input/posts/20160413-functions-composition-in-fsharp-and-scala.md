@@ -140,6 +140,7 @@ let bake temperature duration (sd:seq<Dough>) =
 
 Currying is our friend, let's define one recipe for baking the bread.
 
+Scala:
 ```scala
 def bakeRecipe1 = bake(350)(45)
 
@@ -164,13 +165,17 @@ bake the bread, duration: 45, temperature: 350
 
 ### Monadic chaining
 
-Can you imagine the situation when in the middle of the chain something go wrong? For example a case when the pipe that supplies yeast or water gets chock and no dough is produced or when the oven gets broken and we obtain a half-baked mass of dough. The pure function composition can be interesting for failure tolerant or unbreakable tasks. But what should we do in above described situation? The answer is trivial, use the monads. You can find a lot of fundamental information 
+Can you imagine the situation when in the middle of the chain something goes wrong? For example, a case when the pipe that supplies yeast or water gets chock and no dough is produced or when the oven gets broken and we obtain a half-baked mass of dough. The pure function composition can be interesting for failure tolerant or unbreakable tasks. But what should we do in above described situation? The answer is trivial, use the monads. You can find a lot of fundamental information about monads on [wikipedia](https://en.wikipedia.org/wiki/Monad_(functional_programming)) page. Let's see how monads can be helpful in our case, first we need to define (in F#) or use (in Scala) a special type, called `Either`. F# definition can look like a discriminated union below:
 
 ```F#
 type Either<'a, 'b> = 
     | Left of 'a 
     | Right of 'b
+```
+Now we are ready chain, for that purpose we need to create an equivalent of monadic bind operation that should take a monadic value(M)  and a function(f) that can transform the value (`f: (x -> M y)`).
 
+F#:
+```F#
 let chainFunOrFail twoTrackInput switchFunction = 
     match twoTrackInput with
     | Left s -> switchFunction s
@@ -178,3 +183,65 @@ let chainFunOrFail twoTrackInput switchFunction =
 
 let (>>=) = chainFunOrFail
 ```
+
+Scala:
+```Scala
+implicit class MonadicForward[TLeft, TRight](twoTrackInput: Either[TLeft,TRight]) {
+    def >>= [TIntermediate](switchFunction: TLeft => Either[TIntermediate, TRight]) =
+        twoTrackInput match {
+            case Left (s) => switchFunction(s)
+            case Right (f) => Right(f)
+        }
+}
+```
+The last thing that we should do is a slight adaption of above described chain to new `Either`-friendly format.
+
+F#:
+```F#
+let grind (w:Wheat): Either<Flour, string> =
+    printfn "make the flour"; Left {flour = ""}
+let kneadDough (f:Flour) =
+    printfn "make the dough"; Left {dough = ""}
+let distributeDough (d:Dough) =
+    printfn "distribute the dough"; Left(seq { yield d})
+let bake temperature duration (sd:seq<Dough>) =
+    printfn "bake the bread, duration: %d, temperature: %d" duration temperature
+    Left (seq { yield {bread = ""}})
+let bakeRecipe1: seq<Dough> -> Either<seq<Bread>, string> = bake 350 45
+
+({wheat = ""} |> grind) >>= kneadDough >>= distributeDough >>= bakeRecipe1
+```
+
+Scala:
+```Scala
+def grind: (Wheat => Either[Flour, String]) = w => {
+    println("make the flour"); Left(Flour())
+}
+def kneadDough: (Flour => Either[Dough, String]) = f => {
+    println("make the dough"); Left(Dough())
+}
+def distributeDough: (Dough => Either[Seq[Dough], String]) = d => {
+    println("distribute the dough"); Left(Seq[Dough]())
+}
+def bake: (Int => Int => Seq[Dough] => Either[Seq[Bread], String]) =
+    temperature => duration => sd => {
+        println(s"bake the bread, duration: $duration, temperature: $temperature")
+        Left(Seq[Bread]())
+    }
+def bakeRecipe1 = bake(350)(45)
+
+def main(args: Array[String]): Unit = {
+    grind(Wheat()) >>= kneadDough >>= distributeDough >>= bakeRecipe1
+}
+```
+
+The common output will be as followed below:
+```
+make the flour
+make the dough
+distribute the dough
+bake the bread, duration: 45, temperature: 350
+```
+If in one of your chain element returns `Right` with appropriated error indicator, the following chain elements will be ignored and execution workflow will just bypass them and return an error. You can try to experiment error scenarios by yourself.
+
+### Final part
