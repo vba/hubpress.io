@@ -9,16 +9,16 @@
     <link type="text/css" rel="stylesheet" href="..\assets/hljs-github.min.css"/>
   </head>
 <body><h2 id="functions-composition-in-f-and-scala"><a class="header-link" href="#functions-composition-in-f-and-scala"></a>Functions composition in F# and Scala</h2>
-<p><em>?????</em></p>
+<p><em>Tuesday, May 3rd 2016</em></p>
 <h3 id="let-s-speak-simply"><a class="header-link" href="#let-s-speak-simply"></a>Let&#39;s speak simply</h3>
-<p>I have started think about writing this article a week ago, when I tried to explain my 7 years old kid what mathematical function are. Sounds crazy and maybe pointless, but I finished my introduction by speaking about functions composition. It was so natural to show the meaning of functions by giving the examples from real world and talking about functions composition. The goal of this article to demonstrate how easy and powerful is function composition. I&#39;ll start by pure composition introduction and cool explanation, after that we&#39;ll taste a bit of currying and get some fun with monads. Hope you&#39;ll enjoy.</p>
+<p>I have started to think about writing this article few weeks ago, when I tried to explain my 7 years old kid what mathematical functions are. We started by look at very simple aspects. Sounds crazy and maybe pointless, but I finished my introduction by speaking about functions composition. It was so natural to show the meaning of functions by giving the examples from real world and talking about functions composition. The goal of this article is to demonstrate how easy and powerful function composition is. I&#39;ll start by pure composition introduction and cool explanation, after that we&#39;ll taste a bit of currying and get some fun with monads. Hope you&#39;ll enjoy.</p>
 <h3 id="function-as-a-box"><a class="header-link" href="#function-as-a-box"></a>Function as a box</h3>
-<p>Let&#39;s imagine math functions as boxes, where each box can take any positive amount of parameters, then it does some job and finally returns a result. Briefly speaking, we can represent a sum function as one of followed figures:</p>
+<p>Let&#39;s imagine math functions as boxes, where each box can take any positive amount of parameters, then does some job and returns a result. Briefly speaking, we can represent a sum function as one of followed figures:</p>
 <p class="img-container"><img src="https://habrastorage.org/files/b30/d99/72c/b30d9972c5a34b74bcbeaadf82bb1d0f.png" alt=""></p>
 <p><em>Figure 1, alphanumerical representation of a sum function</em></p>
 <p class="img-container"><img src="https://habrastorage.org/files/355/28d/990/35528d99027a4be19dd4d7d831ab7907.png" alt=""></p>
 <p><em>Figure 2, symbolic representation of a sum function</em></p>
-<p>Let&#39;s consider a situation when we need to assemble and launch an all-in-one bread factory. This factory will work with on demand principles, every demand will activate a chain of specific operations and will end up by suppling the final product - bread. On initial step we need to define specific operations, we will represent each operation as a function/box. There is a list of higher order operations that we would expect:</p>
+<p>Let&#39;s consider a situation when we need to assemble and launch an all-in-one bread factory. This factory will work with on demand principles, every demand will activate a chain of specific operations and will end up by supplying a final product - the bread. On initial step we need to define specific operations, we will represent each operation as a function/box. There is a list of higher order operations that we would expect:</p>
 <ul class="list">
 <li>Grind, takes a wheat, grind it and returns a flour</li>
 <li>KneadDough, takes the flour, mix it with internal ingredients and produces a dough</li>
@@ -26,20 +26,22 @@
 <li>Bake, takes dough portions and bake it, returns portions of bread</li>
 </ul>
 <p>It&#39;s time to organize our bread factory by assembling the production chain, as following:</p>
-<pre class="hljs"><code> <span class="hljs-function"><span class="hljs-title">w</span> -&gt;</span> [G<span class="hljs-function"><span class="hljs-title">rind</span>] -&gt;</span> [K<span class="hljs-function"><span class="hljs-title">neadDough</span>] -&gt;</span> [D<span class="hljs-function"><span class="hljs-title">istributeDough</span>] -&gt;</span> [B<span class="hljs-function"><span class="hljs-title">ake</span>] -&gt;</span> b</code></pre><p>That&#39;s all, our chain is operational, it&#39;s composed of small parts where each part can be composed of other sub parts, etc. You can model a great amount of things around you just by using the notions of functions composition. It&#39;s really simple. You can discover more theoretical aspects <a href="https://en.wikipedia.org/wiki/Function_composition">here</a>.</p>
+<pre class="hljs"><code> <span class="hljs-function"><span class="hljs-title">w</span> -&gt;</span> [G<span class="hljs-function"><span class="hljs-title">rind</span>] -&gt;</span> [K<span class="hljs-function"><span class="hljs-title">neadDough</span>] -&gt;</span> [D<span class="hljs-function"><span class="hljs-title">istributeDough</span>] -&gt;</span> [B<span class="hljs-function"><span class="hljs-title">ake</span>] -&gt;</span> b</code></pre><p class="img-container"><img src="" alt=""></p>
+<p><em>Figure 3, assembled chain representation</em></p>
+<p>That&#39;s all, our chain is operational, it&#39;s composed of small parts where each part can be composed of other sub parts, etc. You can model a great amount of things around you just by using the notions of functions composition. It&#39;s really simple. You can discover more theoretical aspects <a href="https://en.wikipedia.org/wiki/Function_composition">here</a>.</p>
 <h3 id="composition-expression"><a class="header-link" href="#composition-expression"></a>Composition expression</h3>
 <p>Let&#39;s have a look how we can represent the production chain with javascript from above example:</p>
-<pre class="hljs"><code><span class="hljs-keyword">var</span> b = bake(distribureDough(kneadDough(grind(w))));</code></pre><p>Just imagine how will look a similar chain of 10 - 15 functions, but it&#39;s one of issues. It&#39;s not really a composition, because in math, function composition is the pointwise application of one function to the result of another to produce a third function. We can partially reach this in following manner:</p>
+<pre class="hljs"><code><span class="hljs-keyword">var</span> b = bake(distribureDough(kneadDough(grind(w))));</code></pre><p>Just imagine how will look a similar chain of 10 - 15 functions, but it&#39;s only one of potential issues. It&#39;s not really a composition, because in math, function composition is the pointwise application of one function to the result of another to produce a third function. We can partially reach this in following manner:</p>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myChain1</span>(<span class="hljs-params">w</span>) </span>{
     <span class="hljs-keyword">return</span> bake(distribureDough(kneadDough(grind(w))));
 }
-<span class="hljs-keyword">var</span> b = myChain1(w);</code></pre><p>It&#39;s bit awkward, isn&#39;t? Let&#39;s appeal to the power of functional programming and make it in more digestible way. We will operate with more comprehensible example. First we need to define what&#39;s a composition in functional way.</p>
+<span class="hljs-keyword">var</span> b = myChain1(w);</code></pre><p>It&#39;s a bit awkward, isn&#39;t? Let&#39;s appeal to the power of functional programming and make it in more digestible way. We will operate with more comprehensible example. First we need to define what&#39;s a composition in functional way.</p>
 <h6 id="scala-version"><a class="header-link" href="#scala-version"></a>Scala version</h6>
 <pre class="hljs"><code><span class="hljs-keyword">implicit</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Forward</span>[<span class="hljs-type">TIn</span>, <span class="hljs-type">TIntermediate</span>](<span class="hljs-params">f: <span class="hljs-type">TIn</span> =&gt; <span class="hljs-type">TIntermediate</span></span>) </span>{
     <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">&gt;&gt;</span> </span>[<span class="hljs-type">TOut</span>](g: <span class="hljs-type">TIntermediate</span> =&gt; <span class="hljs-type">TOut</span>): <span class="hljs-type">TIn</span> =&gt; <span class="hljs-type">TOut</span> = source =&gt; g(f(source))
 }</code></pre><h6 id="f-version"><a class="header-link" href="#f-version"></a>F# version</h6>
-<p>By default F# has composition operator by default, you don&#39;t need to define anything.</p>
-<pre class="hljs"><code>let (<span class="hljs-name">&gt;&gt;</span>) f g x = g ( <span class="hljs-name">f</span>(<span class="hljs-name">x</span>) )</code></pre><p>The compiler of F# is smart enough to surmise that you&#39;re dealing with functions, the type of above function <code>(&gt;&gt;)</code> will be as following:</p>
+<p>Generally, F# has composition operator by default, you don&#39;t need to define anything. But if you need to redefine it, you can achieve it as below:</p>
+<pre class="hljs"><code>let (<span class="hljs-name">&gt;&gt;</span>) f g x = g ( <span class="hljs-name">f</span>(<span class="hljs-name">x</span>) )</code></pre><p>The compiler of F# is smart enough to surmise that you&#39;re dealing with functions, the type of above function <code>(&gt;&gt;)</code> will be as followed:</p>
 <pre class="hljs"><code>f:(<span class="hljs-symbol">'a</span> -&gt; <span class="hljs-symbol">'b</span>) -&gt; g:(<span class="hljs-symbol">'b</span> -&gt; <span class="hljs-symbol">'c</span>) -&gt; x:<span class="hljs-symbol">'a</span> -&gt; <span class="hljs-symbol">'c</span></code></pre><h5 id="chain-it-all-together"><a class="header-link" href="#chain-it-all-together"></a>Chain it all together</h5>
 <p>The solution for previous task will look in <em>Scala</em> like:</p>
 <pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">BreadFactory</span> </span>{
@@ -77,7 +79,7 @@ type Bread = {bread:<span class="hljs-keyword">string</span>}
 make <span class="hljs-keyword">the</span> dough
 distribute <span class="hljs-keyword">the</span> dough
 bake <span class="hljs-keyword">the</span> bread</code></pre><h3 id="currying"><a class="header-link" href="#currying"></a>Currying</h3>
-<p>If you&#39;re not familiar with the notion of currying, you can get more details <a href="https://en.wikipedia.org/wiki/Currying">here</a>. In this part we will combine two powerful mechanisms that came from functional world - currying and composition. Let&#39;s consider the situation when you need to work with functions that have more than one parameter and most of this parameters are known before the execution. For example the <code>bake</code> function from previous part can have parameter as temperature or duration of baking.</p>
+<p>If you&#39;re not familiar with the notion of currying, you can get more details <a href="https://en.wikipedia.org/wiki/Currying">here</a>. In this part we will combine two powerful mechanisms that came from functional world - currying and composition. Let&#39;s consider the situation when you need to work with functions that have more than one parameter and most of this parameters are known before the execution. For example the <code>bake</code> function from previous part can have parameter as temperature or duration of baking that are perfectly known before.</p>
 <p>Scala:</p>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bake</span></span>: (<span class="hljs-type">Int</span> =&gt; <span class="hljs-type">Int</span> =&gt; <span class="hljs-type">Seq</span>[<span class="hljs-type">Dough</span>] =&gt; <span class="hljs-type">Seq</span>[<span class="hljs-type">Bread</span>]) =
     temperature =&gt; duration =&gt; sd =&gt; {
@@ -87,6 +89,7 @@ bake <span class="hljs-keyword">the</span> bread</code></pre><h3 id="currying"><
 <pre class="hljs"><code>let bake temperature duration (sd:se<span class="hljs-string">q&lt;Dough&gt;</span>) = 
     printfn <span class="hljs-string">"bake the bread, duration: %d, temperature: %d"</span> temperature duration
     se<span class="hljs-string">q { yield {bread = ""}</span>}</code></pre><p>Currying is our friend, let&#39;s define one recipe for baking the bread.</p>
+<p>Scala:</p>
 <pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bakeRecipe1</span> </span>= bake(<span class="hljs-number">350</span>)(<span class="hljs-number">45</span>)
 
 <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
@@ -98,17 +101,68 @@ bake <span class="hljs-keyword">the</span> bread</code></pre><h3 id="currying"><
 make <span class="hljs-keyword">the</span> dough
 distribute <span class="hljs-keyword">the</span> dough
 bake <span class="hljs-keyword">the</span> bread, duration: <span class="hljs-number">45</span>, temperature: <span class="hljs-number">350</span></code></pre><h3 id="monadic-chaining"><a class="header-link" href="#monadic-chaining"></a>Monadic chaining</h3>
-<p>Can you imagine the situation when in the middle of the chain something go wrong? For example a case when the pipe that supplies yeast or water gets chock and no dough is produced or when the oven gets broken and we obtain a half-baked mass of dough. The pure function composition can be interesting for failure tolerant or unbreakable tasks. But what should we do in above described situation? The answer is trivial, use the monads. You can find a lot of fundamental information </p>
+<p>Can you imagine the situation when in the middle of the chain something goes wrong? For example, a case when the pipe that supplies yeast or water gets chock and no dough is produced or when the oven gets broken and we obtain a half-baked mass of dough. The pure function composition can be interesting for failure tolerant or unbreakable tasks. But what should we do in above described situation? The answer is trivial, use the monads, hugh. You can find a lot of fundamental information about monads on <a href="https://en.wikipedia.org/wiki/Monad_(functional_programming">wikipedia</a>) page. Let&#39;s see how monads can be helpful in our case, first we need to define (in F#) or use (in Scala) a special type, called <code>Either</code>. F# definition can look like a discriminated union below:</p>
 <pre class="hljs"><code><span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">Either</span>&lt;<span class="hljs-title">'a</span>, <span class="hljs-title">'b</span>&gt; </span>= 
     | Left <span class="hljs-keyword">of</span> <span class="hljs-symbol">'a</span> 
-    | Right <span class="hljs-keyword">of</span> <span class="hljs-symbol">'b</span>
+    | Right <span class="hljs-keyword">of</span> <span class="hljs-symbol">'b</span></code></pre><p>Now we are ready to chain, for that purpose we need to create an equivalent of monadic bind operation that should take a monadic value(M) and a function(f) that can transform such value (<code>f: (x -&gt; M y)</code>).</p>
+<p>F#:</p>
+<pre class="hljs"><code><span class="hljs-keyword">let</span> chainFunOrFail twoTrackInput switchFunction = 
+    match twoTrackInput <span class="hljs-keyword">with</span>
+    | <span class="hljs-built_in">Left</span> s -&gt; switchFunction s
+    | <span class="hljs-built_in">Right</span> f -&gt; <span class="hljs-built_in">Right</span> f
 
-<span class="hljs-keyword">let</span> chainFunOrFail twoTrackInput switchFunction = 
-    <span class="hljs-keyword">match</span> twoTrackInput <span class="hljs-keyword">with</span>
-    | Left s -&gt; switchFunction s
-    | Right f -&gt; Right f
+<span class="hljs-keyword">let</span> (&gt;&gt;=) = chainFunOrFail</code></pre><p>Scala:</p>
+<pre class="hljs"><code><span class="hljs-keyword">implicit</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MonadicForward</span>[<span class="hljs-type">TLeft</span>, <span class="hljs-type">TRight</span>](<span class="hljs-params">twoTrackInput: <span class="hljs-type">Either</span>[<span class="hljs-type">TLeft</span>,<span class="hljs-type">TRight</span>]</span>) </span>{
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">&gt;&gt;=</span> </span>[<span class="hljs-type">TIntermediate</span>](switchFunction: <span class="hljs-type">TLeft</span> =&gt; <span class="hljs-type">Either</span>[<span class="hljs-type">TIntermediate</span>, <span class="hljs-type">TRight</span>]) =
+        twoTrackInput <span class="hljs-keyword">match</span> {
+            <span class="hljs-keyword">case</span> <span class="hljs-type">Left</span> (s) =&gt; switchFunction(s)
+            <span class="hljs-keyword">case</span> <span class="hljs-type">Right</span> (f) =&gt; <span class="hljs-type">Right</span>(f)
+        }
+}</code></pre><p>The last thing that we should do is a slight adaption of above described chain to new <code>Either</code>-friendly format.</p>
+<p>F#:</p>
+<pre class="hljs"><code>let grind (w:Wheat): Either&lt;Flour, string&gt; =
+    printfn <span class="hljs-string">"make the flour"</span>; Left {flour = <span class="hljs-string">""</span>}
+let kneadDough (f:Flour) =
+    printfn <span class="hljs-string">"make the dough"</span>; Left {dough = <span class="hljs-string">""</span>}
+let distributeDough (d:Dough) =
+    printfn <span class="hljs-string">"distribute the dough"</span>; Left(se<span class="hljs-string">q { yield d}</span>)
+let bake temperature duration (sd:se<span class="hljs-string">q&lt;Dough&gt;</span>) =
+    printfn <span class="hljs-string">"bake the bread, duration: %d, temperature: %d"</span> duration temperature
+    Left (se<span class="hljs-string">q { yield {bread = ""}</span>})
+let bakeRecipe1: se<span class="hljs-string">q&lt;Dough&gt;</span> -&gt; Either&lt;se<span class="hljs-string">q&lt;Bread&gt;</span>, string&gt; = bake <span class="hljs-number">350</span> <span class="hljs-number">45</span>
 
-<span class="hljs-keyword">let</span> (&gt;&gt;=) = chainFunOrFail</code></pre>  <script id="dsq-count-scr" src="http://victors-blog.disqus.com/count.js" async></script>
+({wheat = <span class="hljs-string">""</span>} |&gt; grind) &gt;&gt;= kneadDough &gt;&gt;= distributeDough &gt;&gt;= bakeRecipe1</code></pre><p>Scala:</p>
+<pre class="hljs"><code><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">grind</span></span>: (<span class="hljs-type">Wheat</span> =&gt; <span class="hljs-type">Either</span>[<span class="hljs-type">Flour</span>, <span class="hljs-type">String</span>]) = w =&gt; {
+    println(<span class="hljs-string">"make the flour"</span>); <span class="hljs-type">Left</span>(<span class="hljs-type">Flour</span>())
+}
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">kneadDough</span></span>: (<span class="hljs-type">Flour</span> =&gt; <span class="hljs-type">Either</span>[<span class="hljs-type">Dough</span>, <span class="hljs-type">String</span>]) = f =&gt; {
+    println(<span class="hljs-string">"make the dough"</span>); <span class="hljs-type">Left</span>(<span class="hljs-type">Dough</span>())
+}
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">distributeDough</span></span>: (<span class="hljs-type">Dough</span> =&gt; <span class="hljs-type">Either</span>[<span class="hljs-type">Seq</span>[<span class="hljs-type">Dough</span>], <span class="hljs-type">String</span>]) = d =&gt; {
+    println(<span class="hljs-string">"distribute the dough"</span>); <span class="hljs-type">Left</span>(<span class="hljs-type">Seq</span>[<span class="hljs-type">Dough</span>]())
+}
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bake</span></span>: (<span class="hljs-type">Int</span> =&gt; <span class="hljs-type">Int</span> =&gt; <span class="hljs-type">Seq</span>[<span class="hljs-type">Dough</span>] =&gt; <span class="hljs-type">Either</span>[<span class="hljs-type">Seq</span>[<span class="hljs-type">Bread</span>], <span class="hljs-type">String</span>]) =
+    temperature =&gt; duration =&gt; sd =&gt; {
+        println(<span class="hljs-string">s"bake the bread, duration: <span class="hljs-subst">$duration</span>, temperature: <span class="hljs-subst">$temperature</span>"</span>)
+        <span class="hljs-type">Left</span>(<span class="hljs-type">Seq</span>[<span class="hljs-type">Bread</span>]())
+    }
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bakeRecipe1</span> </span>= bake(<span class="hljs-number">350</span>)(<span class="hljs-number">45</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]): <span class="hljs-type">Unit</span> = {
+    grind(<span class="hljs-type">Wheat</span>()) &gt;&gt;= kneadDough &gt;&gt;= distributeDough &gt;&gt;= bakeRecipe1
+}</code></pre><p>The common output will be as followed below:</p>
+<pre class="hljs"><code>make <span class="hljs-keyword">the</span> flour
+make <span class="hljs-keyword">the</span> dough
+distribute <span class="hljs-keyword">the</span> dough
+bake <span class="hljs-keyword">the</span> bread, duration: <span class="hljs-number">45</span>, temperature: <span class="hljs-number">350</span></code></pre><p>If one of your chain element returns <code>Right</code> with appropriated error indicator, the following chain elements will be ignored and execution workflow will just bypass it and all following chain parts and propagate thrown error forward. You can try to experiment failure scenarios by yourself.</p>
+<h3 id="final-part"><a class="header-link" href="#final-part"></a>Final part</h3>
+<p>As you may noticed, there is some magical relation between theory of categories(origin of monads) and composition of functions. The goal of this article is to show how to manipulate such techniques in practice and how to organize your code in more functional way. You can dive in more fundamental aspects of exposed elements by yourself. Hope this article would be useful for those of you who look for either abandon imperative programming and understand functional way of thinking or just discover practical aspects of functional composition and monads.</p>
+<h3 id="code-samples"><a class="header-link" href="#code-samples"></a>Code samples</h3>
+<ul class="list">
+<li>All in one F# module is available <a href="http://">here</a></li>
+<li>Scala version can be downloaded from <a href="http://">here</a></li>
+</ul>
+  <script id="dsq-count-scr" src="http://victors-blog.disqus.com/count.js" async></script>
   <h3 id="comments"><a class="header-link" href="#comments"></a>Comments</h3>
   <div id="disqus_thread"></div>
   <script>
