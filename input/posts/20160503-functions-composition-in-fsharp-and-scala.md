@@ -30,7 +30,7 @@ It's time to organize our bread factory by assembling the production chain, as f
  w -> [Grind] -> [KneadDough] -> [DistributeDough] -> [Bake] -> b
 ```
 
-![]()
+![](https://habrastorage.org/files/d54/160/2d6/d541602d613140b99f935162349ee1fa.png)
 
 _Figure 3, assembled chain representation_
 
@@ -254,5 +254,5 @@ As you may noticed, there is some magical relation between theory of categories(
 
 ### Code samples
 
-- All in one F# module is available [here](http://)
-- Scala version can be downloaded from [here](http://)
+- All in one F# module is available [here](https://gist.github.com/vba/409a3493466590f0a7002d728abc4be0#file-functioncomposition-fs)
+- Scala version can be downloaded from [here](https://gist.github.com/vba/55d522077268ce1ec586631bc2a2e7a6#file-functioncomposition-scala)

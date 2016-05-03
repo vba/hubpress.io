@@ -26,7 +26,7 @@
 <li>Bake, takes dough portions and bake it, returns portions of bread</li>
 </ul>
 <p>It&#39;s time to organize our bread factory by assembling the production chain, as following:</p>
-<pre class="hljs"><code> <span class="hljs-function"><span class="hljs-title">w</span> -&gt;</span> [G<span class="hljs-function"><span class="hljs-title">rind</span>] -&gt;</span> [K<span class="hljs-function"><span class="hljs-title">neadDough</span>] -&gt;</span> [D<span class="hljs-function"><span class="hljs-title">istributeDough</span>] -&gt;</span> [B<span class="hljs-function"><span class="hljs-title">ake</span>] -&gt;</span> b</code></pre><p class="img-container"><img src="" alt=""></p>
+<pre class="hljs"><code> <span class="hljs-function"><span class="hljs-title">w</span> -&gt;</span> [G<span class="hljs-function"><span class="hljs-title">rind</span>] -&gt;</span> [K<span class="hljs-function"><span class="hljs-title">neadDough</span>] -&gt;</span> [D<span class="hljs-function"><span class="hljs-title">istributeDough</span>] -&gt;</span> [B<span class="hljs-function"><span class="hljs-title">ake</span>] -&gt;</span> b</code></pre><p class="img-container"><img src="https://habrastorage.org/files/d54/160/2d6/d541602d613140b99f935162349ee1fa.png" alt=""></p>
 <p><em>Figure 3, assembled chain representation</em></p>
 <p>That&#39;s all, our chain is operational, it&#39;s composed of small parts where each part can be composed of other sub parts, etc. You can model a great amount of things around you just by using the notions of functions composition. It&#39;s really simple. You can discover more theoretical aspects <a href="https://en.wikipedia.org/wiki/Function_composition">here</a>.</p>
 <h3 id="composition-expression"><a class="header-link" href="#composition-expression"></a>Composition expression</h3>
@@ -159,8 +159,8 @@ bake <span class="hljs-keyword">the</span> bread, duration: <span class="hljs-nu
 <p>As you may noticed, there is some magical relation between theory of categories(origin of monads) and composition of functions. The goal of this article is to show how to manipulate such techniques in practice and how to organize your code in more functional way. You can dive in more fundamental aspects of exposed elements by yourself. Hope this article would be useful for those of you who look for either abandon imperative programming and understand functional way of thinking or just discover practical aspects of functional composition and monads.</p>
 <h3 id="code-samples"><a class="header-link" href="#code-samples"></a>Code samples</h3>
 <ul class="list">
-<li>All in one F# module is available <a href="http://">here</a></li>
-<li>Scala version can be downloaded from <a href="http://">here</a></li>
+<li>All in one F# module is available <a href="https://gist.github.com/vba/409a3493466590f0a7002d728abc4be0#file-functioncomposition-fs">here</a></li>
+<li>Scala version can be downloaded from <a href="https://gist.github.com/vba/55d522077268ce1ec586631bc2a2e7a6#file-functioncomposition-scala">here</a></li>
 </ul>
   <script id="dsq-count-scr" src="http://victors-blog.disqus.com/count.js" async></script>
   <h3 id="comments"><a class="header-link" href="#comments"></a>Comments</h3>
