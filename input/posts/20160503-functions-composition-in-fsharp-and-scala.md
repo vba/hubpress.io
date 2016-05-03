@@ -64,7 +64,7 @@ implicit class Forward[TIn, TIntermediate](f: TIn => TIntermediate) {
 ###### F# version
 
 Generally, F# has composition operator by default, you don't need to define anything. But if you need to redefine it, you can achieve it as below:
-```F#
+```c#
 let (>>) f g x = g ( f(x) )
 ```
 
@@ -100,7 +100,7 @@ object BreadFactory {
 ```
 
 F# version will be more concise:
-```F#
+```c#
 type Wheat = {wheat:string}
 type Flour = {flour:string}
 type Dough = {dough:string}
@@ -136,7 +136,7 @@ def bake: (Int => Int => Seq[Dough] => Seq[Bread]) =
 ```
 
 F#:
-```F#
+```c#
 let bake temperature duration (sd:seq<Dough>) = 
     printfn "bake the bread, duration: %d, temperature: %d" temperature duration
     seq { yield {bread = ""}}
@@ -171,7 +171,7 @@ bake the bread, duration: 45, temperature: 350
 
 Can you imagine the situation when in the middle of the chain something goes wrong? For example, a case when the pipe that supplies yeast or water gets chock and no dough is produced or when the oven gets broken and we obtain a half-baked mass of dough. The pure function composition can be interesting for failure tolerant or unbreakable tasks. But what should we do in above described situation? The answer is trivial, use the monads, hugh. You can find a lot of fundamental information about monads on [wikipedia](https://en.wikipedia.org/wiki/Monad_(functional_programming)) page. Let's see how monads can be helpful in our case, first we need to define (in F#) or use (in Scala) a special type, called `Either`. F# definition can look like a discriminated union below:
 
-```F#
+```c#
 type Either<'a, 'b> = 
     | Left of 'a 
     | Right of 'b
@@ -179,7 +179,7 @@ type Either<'a, 'b> =
 Now we are ready to chain, for that purpose we need to create an equivalent of monadic bind operation that should take a monadic value(M) and a function(f) that can transform such value (`f: (x -> M y)`).
 
 F#:
-```F#
+```c#
 let chainFunOrFail twoTrackInput switchFunction = 
     match twoTrackInput with
     | Left s -> switchFunction s
@@ -201,7 +201,7 @@ implicit class MonadicForward[TLeft, TRight](twoTrackInput: Either[TLeft,TRight]
 The last thing that we should do is a slight adaption of above described chain to new `Either`-friendly format.
 
 F#:
-```F#
+```c#
 let grind (w:Wheat): Either<Flour, string> =
     printfn "make the flour"; Left {flour = ""}
 let kneadDough (f:Flour) =
