@@ -169,7 +169,7 @@ bake the bread, duration: 45, temperature: 350
 
 ### Monadic chaining
 
-Can you imagine the situation when in the middle of the chain something goes wrong? For example, a case when the pipe that supplies yeast or water gets chock and no dough is produced or when the oven gets broken and we obtain a half-baked mass of dough. The pure function composition can be interesting for failure tolerant or unbreakable tasks. But what should we do in above described situation? The answer is trivial, use the monads, hugh. You can find a lot of fundamental information about monads on [wikipedia](https://en.wikipedia.org/wiki/Monad_(functional_programming)) page. Let's see how monads can be helpful in our case, first we need to define (in F#) or use (in Scala) a special type, called `Either`. F# definition can look like a discriminated union below:
+Can you imagine the situation when in the middle of the chain something goes wrong? For example, a case when the pipe that supplies yeast or water gets chock and no dough is produced or when the oven gets broken and we obtain a half-baked mass of dough. The pure function composition can be interesting for failure tolerant or unbreakable tasks. But what should we do in above described situation? The answer is trivial, use the monads, hum. You can find a lot of fundamental information about monads on [wikipedia](https://en.wikipedia.org/wiki/Monad_(functional_programming)) page. Let's see how monads can be helpful in our case, first we need to define (in F#) or use (in Scala) a special type, called `Either`. F# definition can look like a discriminated union below:
 
 ```c#
 type Either<'a, 'b> = 
@@ -246,7 +246,7 @@ make the dough
 distribute the dough
 bake the bread, duration: 45, temperature: 350
 ```
-If one of your chain element returns `Right` with appropriated error indicator, the following chain elements will be ignored and execution workflow will just bypass it and all following chain parts and propagate thrown error forward. You can try to experiment failure scenarios by yourself.
+If one of your chain element returns `Right` with appropriated error indicator, the following chain elements will be ignored and execution workflow will just bypass them all and propagate thrown error forward. You can try to experiment failure scenarios by yourself.
 
 ### Final part
 
