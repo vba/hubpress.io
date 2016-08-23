@@ -1,12 +1,12 @@
 ## Victor's blog
 
 ### About me
-I'm passionate about technology. In web developer, I've also interest in functional programming and other similar stuff.
+I'm passionate about technology. I'm a web developer, I've also interest in functional programming and machine learning.
 
 ### My articles
 
 - Mai 2016
-	- [Functions composition in F# and Scala](posts/20160503-functions-composition-in-fsharp-and-scala.html)
+    - [Functions composition in F# and Scala](posts/20160503-functions-composition-in-fsharp-and-scala.html)
 - March 2016
     - [Unit testing with F#](posts/20160331-fsharp-unit-testing.html)
 - December 2015
