@@ -4,7 +4,8 @@
 I'm passionate about technology. I'm a web developer, I've also interest in functional programming and machine learning.
 
 ### My articles
-
+- November 2016
+    - [Some algorithmic problem and F#](posts/20161126-some-algorithmic-problem-and-fsharp.html)
 - Mai 2016
     - [Functions composition in F# and Scala](posts/20160503-functions-composition-in-fsharp-and-scala.html)
 - March 2016
