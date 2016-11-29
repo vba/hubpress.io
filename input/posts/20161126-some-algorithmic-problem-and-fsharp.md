@@ -93,7 +93,7 @@ let res = doIt line n
 printfn "%d" res
 ```
 
-### F# based solution with nested loops
+### F# based solution with tail recursion
 
 What functional code could be written without tail recursion can exclaim you, and you'll be right. Seriously speaking, nested loops seem awkward here, let's stop such profanation and eliminate these loops with recursion. We just need to remake the `doIt` method.
 
