@@ -83,7 +83,7 @@
 <span class="hljs-keyword">if</span> (n = <span class="hljs-number">1</span>) then printfn <span class="hljs-string">"%d"</span> <span class="hljs-number">0</span>
 
 <span class="hljs-keyword">let</span> res = doIt line n
-printfn <span class="hljs-string">"%d"</span> res</code></pre><h3 id="f-based-solution-with-nested-loops-1"><a class="header-link" href="#f-based-solution-with-nested-loops-1"></a>F# based solution with nested loops</h3>
+printfn <span class="hljs-string">"%d"</span> res</code></pre><h3 id="f-based-solution-with-tail-recursion-1"><a class="header-link" href="#f-based-solution-with-tail-recursion-1"></a>F# based solution with tail recursion</h3>
 <p>What functional code could be written without tail recursion can exclaim you, and you&#39;ll be right. Seriously speaking, nested loops seem awkward here, let&#39;s stop such profanation and eliminate these loops with recursion. We just need to remake the <code>doIt</code> method.</p>
 <pre class="hljs"><code>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">rec</span> outer(i) =
         <span class="hljs-keyword">let</span> <span class="hljs-keyword">rec</span> nested(j) =
